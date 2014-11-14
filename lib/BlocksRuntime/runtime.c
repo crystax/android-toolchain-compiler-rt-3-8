@@ -28,7 +28,16 @@
 #include <string.h>
 #include <stdint.h>
 
+#if __GNUC__
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#endif
+
+#if __ANDROID__
+#define HAVE_SYNC_BOOL_COMPARE_AND_SWAP_INT 1
+#define HAVE_SYNC_BOOL_COMPARE_AND_SWAP_LONG 1
+#else
 #include "config.h"
+#endif
 
 #ifdef HAVE_AVAILABILITY_MACROS_H
 #include <AvailabilityMacros.h>
